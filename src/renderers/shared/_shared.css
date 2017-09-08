@@ -1,0 +1,102 @@
+@define-mixin pwCta {
+  .keyboard &:focus {
+    outline: .1rem dotted #999;
+  }
+}
+
+/**
+ * @todo Don't use name "dark", call it style #2?
+ */
+
+@define-mixin pwCtaDark {
+  .keyboard&:focus {
+    outline-color: #777;
+  }
+}
+
+/* General */
+
+html {
+  font-size: 62.5%;
+  line-height: 1.5;
+  color: #383838;
+  cursor: default;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+body {
+  font-size: inherit;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  text-align: center;
+}
+
+.pwVisuallyHidden {
+  position: absolute !important;
+  height: .1rem;
+  width: .1rem;
+  overflow: hidden;
+  clip: rect( .1rem, .1rem, .1rem, .1rem );
+}
+
+/* Link */
+
+.pwLink {
+  @mixin pwCta;
+  display: inline-block;
+  border-bottom: .1rem dashed #999;
+  color: #333;
+  text-decoration: none;
+  white-space: initial;
+}
+
+.pwLink:hover {
+  border-bottom-style: solid;
+}
+
+.keyboard .pwLink:focus {
+  border-bottom-color: transparent;
+}
+
+/* Call-to-action */
+
+.pwCta {
+  @mixin pwCta;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Dark theme */
+
+.dark,
+.dark #preloader {
+  background-color: #141f2e;
+}
+
+.dark {
+  color: #dedede;
+}
+
+.dark .pwLink {
+  @mixin pwCtaDark;
+  border-bottom-color: #777;
+  color: #dedede;
+}
+
+.dark.keyboard .pwLink:focus {
+  border-bottom-color: transparent;
+}
+
+.dark .pwCta {
+  @mixin pwCtaDark;
+}

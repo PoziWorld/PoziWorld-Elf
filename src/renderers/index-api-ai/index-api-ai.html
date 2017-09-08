@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../bundle/renderer-index-api-ai.bundle.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="preloader">
+      <div class="logo"></div>
+    </div>
+    <script>
+      // Node variables can't be defined in bundle.js
+      const fs = require( 'fs' );
+      const ipc = require( 'electron' ).ipcRenderer;
+
+      // API.AI
+      AGENT_LANGUAGE = 'en';
+      AGENT_AVATAR_ID = 'https://console.api.ai/api-client/assets/img/logo-short.png';
+      SERVICE_BASE_URL = 'https://console.api.ai/api-client/';
+      require( '../../../.privateapiaiurlprefix' );
+    </script>
+    <script src="../../../bundle/renderer-index-api-ai.bundle.js"></script>
+  </body>
+</html>

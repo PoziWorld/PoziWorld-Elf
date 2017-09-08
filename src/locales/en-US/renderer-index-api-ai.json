@@ -1,0 +1,14 @@
+{
+  "giveCommand": "Give a command",
+
+  "microphoneWelcomeMessage": "Welcome to PoziWorld!\nClick microphone to give Elf your first {{commandsListLink}}.",
+  "microphoneWelcomeMessageListeningModeWakeEnabled": "Click microphone or say “{{enabledHotword1}}” to give Elf your first {{commandsListLink}}.",
+
+  "commandsListLink": "command",
+  "seeAvailableCommandsList": "See a list of available commands",
+
+  "commandPrefix": "Command: ",
+
+  "wakeByHotwordStatus": "Wake by hotword will be ready shortly. Please wait.",
+  "updateDownloaded": "An app update has been downloaded.\nIt will be automatically installed when you exit the app."
+}

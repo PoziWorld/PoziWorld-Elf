@@ -1,0 +1,14 @@
+{
+  "settings": "Settings",
+
+  "view": "View",
+  "useDarkTheme": "Use dark theme",
+  "enableKeyboardNavigationStyles": "Enable styles optimized for keyboard navigation",
+
+  "urlGoTo": "Go to URL",
+  "urlCopy": "Copy URL",
+
+  "noActivation": "For your commands to work, please\n\n1) exit the app by clicking X;\n2) activate it from a partner extension.",
+
+  "availableHotword1": "Okey-dokey"
+}

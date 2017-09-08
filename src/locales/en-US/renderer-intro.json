@@ -1,0 +1,21 @@
+{
+  "tlDr": "TL;DR   Click “Next”, approve requests from Windows.\nIf you have a compatible browser and a partner extension installed, you are good to go.",
+  "description": "PoziWorld Elf lets you use your voice to control things you usually use your mouse and/or keyboard for.",
+  "supportedCommands": "Not many {{commandsListLink}} are supported at the moment, but more are on the way.",
+  "commandsListLink": "commands",
+  "seeAvailableCommandsList": "See a list of available commands",
+  "requirements": "Elf is not a standalone app, it works by sending commands to {{partnersListLink}} installed in your browser (the {{chromeBrowserLink}}, {{operaBrowserLink}}, or another Chromium-based browser).",
+  "chromeBrowserLink": "Google Chrome",
+  "operaBrowserLink": "Opera",
+  "partnersListLink": "partner extensions",
+  "seeAvailablePartnersList": "See a list of available partner browser extensions",
+  "howItSendsCommands": "To be able to send commands, Elf needs to establish a connection with your browser.",
+  "whatToDo": "When you click “Next” below, Windows will ask you a couple of questions. Reply “Yes” to both.",
+  "details": "(Technical detail: a record specifying the location of Elf files on your computer will be created in the Windows registry; nothing else, we promise – read more {{detailsLink}}).",
+  "detailsLink": "details",
+  "userAgreement": "By clicking {{nextCtaText}}, you agree to our {{termsLink}} and {{privacyPolicyLink}}.",
+  "termsLink": "terms of use",
+  "privacyPolicyLink": "privacy policy",
+  "nextCta": "{{nextCtaText}} >",
+  "nextCtaText": "Next"
+}

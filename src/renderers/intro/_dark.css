@@ -1,0 +1,16 @@
+.dark p {
+  color: #cdcdcd;
+}
+
+.dark .pwCta {
+  border-color: #efefef;
+  color: #efefef;
+}
+
+.dark .pwCta:focus {
+  background-color: #273548;
+}
+
+.dark .pwCta:active {
+  border-color: #777;
+}

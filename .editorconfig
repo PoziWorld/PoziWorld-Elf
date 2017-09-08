@@ -1,0 +1,24 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{js,css,html,json}]
+charset = utf-8
+indent_style = space
+indent_size = 2
+
+[*.{js,css,json}]
+curly_bracket_next_line = false
+indent_brace_style = K&R
+
+[*.{js,css}]
+quote_type = single
+spaces_around_operators = true
+spaces_around_brackets = inside
+
+[*.html]
+quote_type = double

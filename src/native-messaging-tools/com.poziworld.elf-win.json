@@ -1,0 +1,15 @@
+{
+  "name": "com.poziworld.elf",
+  "description": "PoziWorld Elf",
+  "path": "elf-start.bat",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://bdglbogiolkffcmojmmkipgnpkfipijm/",
+    "chrome-extension://lbjkjmmcckjjijnnhdabbnkddgmpinhc/",
+    "chrome-extension://hfdnjjobhcbkciapachaegijeednggeh/",
+    "chrome-extension://ioiggdgamcfglpihfidbphgoofpmncfi/",
+    "chrome-extension://chinfkfmaefdlchhempbfgbdagheknoj/",
+    "chrome-extension://nhglpabogkpplpcemgiaopjoehcpajdk/",
+    "chrome-extension://obeeippghalacfdbbfbcmlieeieaoina/"
+  ]
+}

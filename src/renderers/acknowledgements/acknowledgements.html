@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../bundle/renderer-acknowledgements.bundle.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Node variables can't be defined in bundle.js
+      const fs = require( 'fs' );
+      const devtron = require( 'devtron' );
+    </script>
+    <script src="../../../bundle/renderer-acknowledgements.bundle.js"></script>
+  </body>
+</html>

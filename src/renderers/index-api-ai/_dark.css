@@ -1,0 +1,21 @@
+.dark #mic:hover::before {
+  background-image: url( './icon-microphone-dark.svg' );
+}
+
+.dark .active#mic::before {
+  background-image: url( './icon-microphone-active-2.svg' );
+  transition: all .2s;
+}
+
+.dark #noActivationCta::before {
+  background-image: url( './icon-activation-dark.svg' );
+}
+
+.dark #wakeByHotwordStatusCta::before {
+  background-image: url( './icon-wake-dark.svg' );
+}
+
+.dark #updateDownloadedCta::before {
+  background-image: url( './icon-update-dark.svg' );
+}
+

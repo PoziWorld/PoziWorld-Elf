@@ -1,0 +1,244 @@
+@import "../shared/shared";
+@import "./dark";
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#preloader {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 999999;
+  opacity: 1;
+  transition: opacity .5s ease
+}
+
+#preloader .logo {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 10rem;
+  height: 10rem;
+  background: url( './icon-poziworld.svg' ) center / contain no-repeat;
+  animation: blink normal 2s infinite ease-in-out;
+  transition: all 1s ease-in-out;
+}
+
+/* Mic */
+
+#mic {
+  display: inline-flex !important;
+  position: relative;
+  padding: 0;
+  width: 50vw;
+  height: 50vw;
+}
+
+#mic::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: url( './icon-microphone.svg' ) center / contain no-repeat;
+  transition: all .6s;
+}
+
+#mic:hover::before {
+  background-image: url( './icon-microphone-2.svg' );
+}
+
+.active#mic::before {
+  background-image: url( './icon-microphone-active.svg' );
+  transition: all .2s;
+}
+
+/* Result */
+
+#result {
+  display: -webkit-box;
+  font-size: 1.3em;
+  margin: 1rem 2rem;
+  padding: 0 0 .2rem; /* padding-bottom for .pwLink border-bottom and/or outline */
+  height: 5.7rem;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-line;
+  transition: all .2s;
+}
+
+.user-request#result {
+  cursor: text;
+  opacity: 1;
+  user-select: initial;
+}
+
+.user-request#result::before {
+  content: attr( data-command-prefix );
+  font-style: italic;
+  font-weight: 600;
+}
+
+.listening#result {
+  opacity: 0;
+}
+
+.disabled.user-request#result,
+.disabled.listening#result {
+  display: none;
+}
+
+/* Welcome message */
+
+.pwWelcomeMessage1,
+.isListeningModeWakeByHotwordEnabled#result .pwWelcomeMessage2 {
+  display: none;
+}
+
+.isListeningModeWakeByHotwordEnabled#result .pwWelcomeMessage1 {
+  display: initial;
+}
+
+/* Notifications */
+
+.notifications {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 3rem;
+}
+
+#notifications2 {
+  top: 1.3rem;
+  right: auto;
+  left: 1.3rem;
+  width: 3.5rem;
+}
+
+/**
+ * @todo DRY styles for CTAs.
+ */
+
+/* No activation call-to-action */
+
+#noActivationCta {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  animation-name: rubberBand;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+#noActivationCta:hover {
+  animation: none;
+}
+
+#noActivationCta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: url( './icon-activation.svg' ) center / contain no-repeat;
+}
+
+/* Wake by hotword status call-to-action */
+
+#wakeByHotwordStatusCta {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+}
+
+#wakeByHotwordStatusCta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: url( './icon-wake.svg' ) center / contain no-repeat;
+}
+
+/* Update downloaded call-to-action */
+
+#updateDownloadedCta {
+  position: relative;
+  width: 3.5rem;
+  height: 3.5rem;
+  cursor: help;
+}
+
+#updateDownloadedCta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: url( './icon-update.svg' ) center / contain no-repeat;
+}
+
+@keyframes rubberBand {
+  0% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  15% {
+    -webkit-transform: scale3d(1.25, 0.75, 1);
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  20% {
+    -webkit-transform: scale3d(0.75, 1.25, 1);
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  25% {
+    -webkit-transform: scale3d(1.15, 0.85, 1);
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  33% {
+    -webkit-transform: scale3d(.95, 1.05, 1);
+    transform: scale3d(.95, 1.05, 1);
+  }
+  38% {
+    -webkit-transform: scale3d(1.05, .95, 1);
+    transform: scale3d(1.05, .95, 1);
+  }
+  50% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}

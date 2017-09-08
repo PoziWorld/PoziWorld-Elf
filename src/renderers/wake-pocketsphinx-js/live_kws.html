@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <h1>Developer console</h1>
+    <section>
+      <select id="keyword"></select>
+      <button id="startBtn">Start</button>
+      <button id="stopBtn">Stop</button>
+      <span id="recording-indicator" hidden>R</span>
+    </section>
+    <section>
+      <h2>Number of spotted keywords</h2>
+      <p id="output"></p>
+    </section>
+    <section>
+      <h2>Status</h2>
+      <p id="current-status">Loading page</p>
+    </section>
+    <script>
+      // Node variables can't be defined in bundle.js
+      const fs = require( 'fs' );
+      const ipc = require( 'electron' ).ipcRenderer;
+    </script>
+    <script src="js/inline.js"></script>
+    <script src="js/audioRecorder.js"></script>
+    <script src="js/callbackManager.js"></script>
+  </body>
+</html>

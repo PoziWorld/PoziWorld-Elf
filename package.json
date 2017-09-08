@@ -1,0 +1,117 @@
+{
+  "name": "poziworld-elf",
+  "productName": "PoziWorld Elf",
+  "version": "1.0.0-rc.2",
+  "description": "Voice control for PoziTone",
+  "main": "bundle/main.bundle.js",
+  "scripts": {
+    "start": "set NODE_ENV=development && electron .",
+    "dev": "webpack --watch --progress --colors",
+    "pack": "build --dir",
+    "predist": "webpack --config webpack-production.config.js -p",
+    "url-friendly-package-name": "set URL_FRIENDLY_PACKAGE_NAME=PoziWorld-Elf",
+    "dist": "build",
+    "dist:win": "npm run predist && set URL_FRIENDLY_PACKAGE_NAME=PoziWorld-Elf&& build --win --ia32 --x64",
+    "dist:win32": "npm run predist && set URL_FRIENDLY_PACKAGE_NAME=PoziWorld-Elf&& set FORCE_ARCH=ia32&& build --win nsis --ia32",
+    "dist:win64": "npm run predist && set URL_FRIENDLY_PACKAGE_NAME=PoziWorld-Elf&& set FORCE_ARCH=x64&& build --win nsis --x64"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PoziWorld/PoziWorld-Elf.git"
+  },
+  "keywords": [
+    "PoziTone",
+    "voice",
+    "control",
+    "PoziWorld"
+  ],
+  "author": "PoziWorld, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PoziWorld/PoziWorld-Elf/issues"
+  },
+  "homepage": "https://github.com/PoziWorld/PoziWorld-Elf",
+  "devDependencies": {
+    "asar": "^0.13.0",
+    "babel": "^6.5.2",
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.7",
+    "babel-plugin-transform-class-properties": "^6.19.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.8.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "devtron": "^1.4.0",
+    "electron": "^1.4.15",
+    "electron-builder": "^17.8.0",
+    "electron-packager": "^8.5.2",
+    "electron-prebuilt": "^1.2.0",
+    "jshint": "^2.9.4",
+    "jshint-loader": "^0.8.3",
+    "json-loader": "^0.5.4",
+    "node-libs-browser": "^1.0.0",
+    "node-windows": "^0.1.12",
+    "postcss-loader": "^1.3.3",
+    "precss": "^1.4.0",
+    "react-i18next": "^2.2.1",
+    "strip-loader": "^0.1.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.3",
+    "webpack-target-electron-renderer": "^0.4.0",
+    "winston": "^2.3.1"
+  },
+  "dependencies": {
+    "chokidar": "^1.6.0",
+    "devtron": "^1.4.0",
+    "electron-config": "^0.2.1",
+    "electron-debug": "^1.1.0",
+    "electron-updater": "^1.14.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "i18next": "^7.1.0",
+    "i18next-sync-fs-backend": "^0.1.0",
+    "node-reg": "^0.2.4",
+    "node-windows": "^0.1.12",
+    "ps-node": "^0.1.4",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "build": {
+    "appId": "com.poziworld.elf",
+    "artifactName": "${productName}-Setup-v${version}-${arch}.${ext}",
+    "forceCodeSigning": true,
+    "win": {
+      "target": "nsis-web",
+      "publisherName": "PoziWorld, Inc.",
+      "icon": "src/shared/images/poziworld-app-icon-256.ico"
+    },
+    "nsis": {
+      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}-${env.FORCE_ARCH}.${ext}"
+    },
+    "nsisWeb": {
+      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}.${ext}"
+    },
+    "compression": "maximum",
+    "files": [
+      "!src/native-messaging-tools/*"
+    ],
+    "extraFiles": [
+      {
+        "from": "bin/",
+        "to": "bin/"
+      },
+      {
+        "from": "src/native-messaging-tools/",
+        "to": ""
+      },
+      {
+        "from": "src/native-messaging-relay/${arch}/",
+        "to": ""
+      },
+      {
+        "from": "bundle/elf.bundle.js",
+        "to": ""
+      }
+    ]
+  }
+}

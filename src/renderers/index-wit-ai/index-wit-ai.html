@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../../bundle/renderer-index-wit-ai.bundle.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Node variables can't be defined in bundle.js
+      const fs = require( 'fs' );
+      const ipc = require( 'electron' ).ipcRenderer;
+      const devtron = require( 'devtron' );
+    </script>
+    <script src="../../../bundle/renderer-index-wit-ai.bundle.js"></script>
+  </body>
+</html>

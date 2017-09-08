@@ -1,0 +1,29 @@
+@import "../shared/shared";
+
+figure {
+  position: relative;
+  margin: 0;
+}
+
+img {
+  display: block;
+  cursor: help;
+}
+
+figcaption {
+  position: absolute;
+  font-size: 1.5em;
+  bottom: 0;
+  margin: 1.5rem;
+  width: 14rem;
+  color: #4284c6;
+  text-align: left;
+}
+
+button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 13.7rem;
+  height: 3rem;
+}

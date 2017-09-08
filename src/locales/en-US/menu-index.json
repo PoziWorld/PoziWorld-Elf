@@ -1,0 +1,48 @@
+{
+  "showReceivedCommands": "Show received commands",
+
+  "window": "Window",
+  "alwaysOnTop": "Keep always on top",
+  "alwaysOpen": "Keep always open",
+  "rememberWindowPosition": "Remember window position",
+  "rememberWindowSize": "Remember window size",
+  "restoreDefaultWindowSize": "Restore default window size",
+  "autoHideMenuBar": "Auto-hide menu (press Alt)",
+
+  "wake": "Wake",
+  "wakeApp": "App",
+  "wakeListeningMode": "Listening mode",
+  "featureComingSoon": "{{feature}} (coming soon)",
+  "featureInBeta": "{{feature}} (beta)",
+  "wakeByHotword": "Say “{{enabledHotword1}}”",
+  "wakeByKeyboardShortcut": "Press keyboard shortcut",
+
+  "updates": "Updates",
+  "downloadUpdatesAutomatically": "Download updates automatically",
+  "checkForUpdatesNow": "Check for updates now",
+
+  "analytics": "Usage and crash reports",
+  "shareAnalyticsAnonymously": "Opt in to make Elf better by sending anonymous information",
+
+  "partnerExtensions": "Partner extensions",
+  "pozitone": "PoziTone",
+  "sttb": "Scroll To Top Button",
+  "moreComingSoon": "More coming soon",
+  "becomePartner": "Become a partner!",
+
+  "commands": "Commands",
+  "commandsList": "Commands list",
+  "commandsFaq": "Commands FAQ",
+
+  "terms": "Terms of use",
+  "privacy": "Privacy",
+  "privacyPolicy": "Privacy policy",
+  "privacyFaq": "Privacy FAQ",
+
+  "contribution": "Contribution",
+  "share": "Share",
+  "incentive": "Incentive",
+
+  "acknowledgements": "Acknowledgements",
+  "version": "v{{version}} ({{bit}}-bit)"
+}

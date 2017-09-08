@@ -1,0 +1,54 @@
+@import "../shared/shared";
+@import "./dark";
+
+body {
+  text-align: left;
+}
+
+#intro {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding: 3.5rem 4rem;
+}
+
+h3 {
+  font-size: 1.6em;
+  line-height: 1.5;
+  margin-top: 0;
+  font-weight: 600;
+  white-space: pre-line;
+}
+
+p {
+  font-size: 1.4em;
+}
+
+hr {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.pwCta {
+  display: inline-flex;
+  align-self: flex-end;
+  font: inherit;
+  font-size: 1.6em;
+  margin: 1rem 1.5rem 0 0;
+  padding: .7rem 2rem;
+  border: .2rem solid #555;
+  border-radius: .4rem;
+  color: #555;
+  background-color: transparent;
+  font-weight: 500;
+}
+
+.pwCta:focus {
+  outline: none;
+  background-color: #fff;
+  border-style: dotted;
+}
+
+.pwCta:active {
+  border-color: #e1e1e1;
+}
