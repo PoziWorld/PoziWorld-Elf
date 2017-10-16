@@ -42,16 +42,6 @@ export const windows = {
     folderName: 'wake-pocketsphinx-js',
     isOpen: false,
   },
-  acknowledgements: {
-    instance: null,
-    options: {
-      width: 750,
-      height: 550,
-      alwaysOnTop: false,
-      darkTheme: config.get( 'boolUseDarkTheme' ),
-    },
-    isOpen: false,
-  },
   activation: {
     instance: null,
     options: {

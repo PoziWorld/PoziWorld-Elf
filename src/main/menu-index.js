@@ -583,12 +583,6 @@ const template = [
             },
           },
         ],
-          /**
-           * @todo
-           */
-        // click () {
-          // loadWindow( 'acknowledgements' );
-        // },
       },
       {
         type: 'separator',

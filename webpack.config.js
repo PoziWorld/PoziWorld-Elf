@@ -12,7 +12,6 @@ module.exports = {
     'renderer-intro': './src/renderers/intro/intro.js',
     'renderer-index-api-ai': './src/renderers/index-api-ai/index-api-ai.js',
     'renderer-index-wit-ai': './src/renderers/index-wit-ai/index-wit-ai.js',
-    'renderer-acknowledgements': './src/renderers/acknowledgements/acknowledgements.js',
     'renderer-activation': './src/renderers/activation/activation.js',
     'renderer-check-process-running': './src/renderers/helper-native-messaging/check-process-running.js',
   },
