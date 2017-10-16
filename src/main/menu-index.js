@@ -26,6 +26,9 @@ const template = [
                 enabled: false,
               },
               {
+                type: 'separator',
+              },
+              {
                 label: i18n.t( 'helpTranslate' ),
                 submenu: [
                   {
@@ -52,6 +55,26 @@ const template = [
                 type: 'radio',
                 checked: config.get( 'strLanguageVoice' ) === 'en-US',
                 enabled: false,
+              },
+              {
+                type: 'separator',
+              },
+              {
+                label: i18n.t( 'requestCommandLanguage' ),
+                submenu: [
+                  {
+                    label: i18n.t( 'urlGoTo' ),
+                    click () {
+                      goToUrl( { strLink: 'requestCommandLanguage' } );
+                    },
+                  },
+                  {
+                    label: i18n.t( 'urlCopy' ),
+                    click () {
+                      copyUrl( { strLink: 'requestCommandLanguage' } );
+                    },
+                  },
+                ],
               },
             ],
           },
@@ -173,6 +196,16 @@ const template = [
                 focusedWindow.setAutoHideMenuBar( boolAutoHideMenuBarNew );
                 config.set( 'boolAutoHideMenuBar', boolAutoHideMenuBarNew );
               }
+            },
+          },
+          {
+            label: i18n.t( 'autoCloseWindowWhenNotActivated' ),
+            type: 'checkbox',
+            checked: config.get( 'boolAutoCloseIndexWindowWhenNotActivated' ),
+            click( menuItem, focusedWindow ) {
+              const boolAutoCloseIndexWindowWhenNotActivatedNew = ! config.get( 'boolAutoCloseIndexWindowWhenNotActivated' );
+
+              config.set( 'boolAutoCloseIndexWindowWhenNotActivated', boolAutoCloseIndexWindowWhenNotActivatedNew );
             },
           },
         ],
@@ -499,18 +532,18 @@ const template = [
         label: i18n.t( 'contribution' ),
         submenu: [
           {
-            label: i18n.t( 'Share' ),
+            label: i18n.t( 'share' ),
             submenu: [
               {
                 label: i18n.t( 'urlGoTo' ),
                 click () {
-                  goToUrl( { strLink: 'spreadWord' } );
+                  goToUrl( { strLink: 'share' } );
                 },
               },
               {
                 label: i18n.t( 'urlCopy' ),
                 click () {
-                  copyUrl( { strLink: 'spreadWord' } );
+                  copyUrl( { strLink: 'share' } );
                 },
               },
             ],
@@ -561,6 +594,26 @@ const template = [
         type: 'separator',
       },
       {
+        label: i18n.t( 'feedback' ),
+        submenu: [
+          {
+            label: i18n.t( 'urlGoTo' ),
+            click () {
+              goToUrl( { strLink: 'feedback' } );
+            },
+          },
+          {
+            label: i18n.t( 'urlCopy' ),
+            click () {
+              copyUrl( { strLink: 'feedback' } );
+            },
+          },
+        ],
+      },
+      {
+        type: 'separator',
+      },
+      {
         label: i18n.t(
           'version',
           {
@@ -568,6 +621,10 @@ const template = [
             bit: process.arch.replace( /\D/g,'' ),
           },
         ),
+        enabled: false,
+      },
+      {
+        label: i18n.t( 'copyright' ),
         enabled: false,
       },
     ],

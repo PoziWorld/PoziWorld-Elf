@@ -3,5 +3,6 @@
   "languageInterface": "Interface",
   "languageVoice": "Voice commands",
   "languageEnglishUnitedStates": "English (United States)",
-  "helpTranslate": "Help us translate!"
+  "helpTranslate": "Help us translate!",
+  "requestCommandLanguage": "Request another language"
 }

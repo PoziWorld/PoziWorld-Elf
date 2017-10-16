@@ -16,8 +16,9 @@ figcaption {
   bottom: 0;
   margin: 1.5rem;
   width: 14rem;
-  color: #4284c6;
+  color: #2ca02c;
   text-align: left;
+  white-space: pre-line;
 }
 
 button {

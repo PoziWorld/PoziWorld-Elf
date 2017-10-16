@@ -27,6 +27,8 @@ const config = new Config( {
     intIndexWindowHeight: null,
 
     boolAutoHideMenuBar: false,
+    boolAutoCloseIndexWindowWhenNotActivated: true,
+    boolKeepActivationWindowOnIndexWindowClosed: false,
 
     // Wake
     boolWakeAppByHotword: false,

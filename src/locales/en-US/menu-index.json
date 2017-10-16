@@ -8,6 +8,7 @@
   "rememberWindowSize": "Remember window size",
   "restoreDefaultWindowSize": "Restore default window size",
   "autoHideMenuBar": "Auto-hide menu (press Alt)",
+  "autoCloseWindowWhenNotActivated": "Auto-close window when not activated",
 
   "wake": "Wake",
   "wakeApp": "App",
@@ -44,5 +45,7 @@
   "incentive": "Incentive",
 
   "acknowledgements": "Acknowledgements",
-  "version": "v{{version}} ({{bit}}-bit)"
+  "feedback": "Contact us",
+  "version": "v{{version}} ({{bit}}-bit)",
+  "copyright": "© PoziWorld, Inc."
 }

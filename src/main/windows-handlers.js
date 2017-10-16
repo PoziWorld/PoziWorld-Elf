@@ -13,7 +13,10 @@ import { fileNames } from '../shared/file-names';
 
 if ( shouldQuit ) {
   app.quit();
-  return;
+  /**
+   * @todo Find ES6-compliant replacement
+   */
+  // return;
 }
 
 ipcMain.on( 'request-load-window', onRequestLoadWindow );
@@ -242,7 +245,13 @@ function loadIndexWindow() {
     windows.index.instance = null;
 
     unloadWindow( 'wake' );
-    unloadWindow( 'activation' );
+
+    if ( config.get( 'boolKeepActivationWindowOnIndexWindowClosed' ) !== true ) {
+      unloadWindow( 'checkProcessRunning' );
+      unloadWindow( 'activation' );
+    }
+
+    config.set( 'boolKeepActivationWindowOnIndexWindowClosed', false );
   } );
 
   fs.writeFile( fileNames.appState, 'ready', ( err ) => {
@@ -372,6 +381,11 @@ export function loadWindow( strWindowName ) {
   window.instance.on( 'closed', () => {
     window.instance = null;
   } );
+
+  // Auto-close the index window to make it more clear it needs to be activated
+  if ( strWindowName === 'activation' && config.get( 'boolAutoCloseIndexWindowWhenNotActivated' ) === true ) {
+    unloadWindow( 'index' );
+  }
 }
 
 /**
@@ -400,7 +414,10 @@ function unloadWindow( strWindowName ) {
     window.instance = null;
   }
 
-  if ( strWindowName === 'wake' ) {
+  if ( strWindowName === 'index' ) {
+    config.set( 'boolKeepActivationWindowOnIndexWindowClosed', true );
+  }
+  else if ( strWindowName === 'wake' ) {
     ipcMain.removeListener( 'wake-word-recognized', onWakeWordRecognized );
     ipcMain.removeListener( 'notify-wake-by-hotword-status', onNotifyWakeByHotwordStatus );
   }
@@ -447,10 +464,19 @@ export function sendMessageToIndexWindow( strChannel, ...args ) {
 function checkHelperProcess() {
   let win = new BrowserWindow( windows.checkProcessRunning.options );
 
+  /**
+   * @todo DRY.
+   */
+  windows.checkProcessRunning.instance = win;
+
   win.loadURL( composeWindowUrl( windows.checkProcessRunning.fileName, windows.checkProcessRunning.folderName ) );
 
   win.webContents.on( 'did-finish-load', () => {
     win.webContents.send( 'check-process-running' );
+  } );
+
+  win.on( 'closed', () => {
+    windows.checkProcessRunning.instance = null;
   } );
 
   ipcMain.on( 'check-process-running-complete', onCheckProcessRunningComplete );

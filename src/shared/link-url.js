@@ -65,17 +65,19 @@ function getUrlById( strLink ) {
 }
 
 const objLinks = {
-  'acknowledgements': 'https://pozi.world/projects/elf/acknowledgements/list', // missing
-  'becomePartner': 'https://pozi.world/projects/elf/partners/new', // missing
-  'commandsFaq': 'https://pozi.world/projects/elf/commands/faq', // missing
-  'commandsList': 'https://pozi.world/projects/elf/commands/list',
-  'contribution': 'https://pozi.world/projects/elf/contribution/new', // missing
-  'helpTranslate': 'https://pozi.world/projects/elf/translations/new',
-  'incentive': 'https://pozi.world/projects/elf/incentive/new',
-  'partnersList': 'https://pozi.world/projects/elf/partners/list', // missing
+  'acknowledgements': 'https://pozi.world/projects/elf/acknowledgements/list/',
+  'becomePartner': 'https://pozi.world/projects/elf/partners/new/',
+  'commandsFaq': 'https://pozi.world/projects/elf/commands/faq/',
+  'commandsList': 'https://pozi.world/projects/elf/commands/list/',
+  'contribution': 'https://pozi.world/projects/elf/contribution/new/',
+  'feedback': 'https://pozi.world/projects/elf/feedback/new/',
+  'helpTranslate': 'https://pozi.world/projects/elf/translations/new/',
+  'incentive': 'https://pozi.world/projects/elf/incentive/new/',
+  'partnersList': 'https://pozi.world/projects/elf/partners/list/',
   'pozitone': 'https://pozitone.com',
-  'privacyFaq': 'https://pozi.world/projects/elf/privacy/faq', // missing
-  'privacyPolicy': 'https://pozi.world/projects/elf/privacy/policy',
-  'share': 'https://pozi.world/projects/elf/share/new',
-  'terms': 'https://pozi.world/projects/elf/terms/list',
+  'privacyFaq': 'https://pozi.world/projects/elf/privacy/faq/',
+  'privacyPolicy': 'https://pozi.world/projects/elf/privacy/policy/',
+  'requestCommandLanguage': 'https://pozi.world/projects/elf/commands/languages/new/',
+  'share': 'https://pozi.world/projects/elf/share/new/',
+  'terms': 'https://pozi.world/projects/elf/terms/list/',
 };

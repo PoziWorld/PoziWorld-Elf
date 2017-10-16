@@ -32,7 +32,7 @@ class Activation extends React.Component {
             title={ i18n.t( 'noActivation' ) }
               />
           <figcaption>
-            { i18n.t( 'demoActivate' ) }
+            { i18n.t( 'noActivation' ) }
           </figcaption>
         </figure>
         <button className="pwCta" onClick={ this.handleClick }>
