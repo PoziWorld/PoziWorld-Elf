@@ -406,6 +406,10 @@ function unloadWindow( strWindowName ) {
   }
 
   if ( isWindowOpen( strWindowName ) ) {
+    if ( strWindowName === 'index' ) {
+      config.set( 'boolKeepActivationWindowOnIndexWindowClosed', true );
+    }
+
     try {
       window.instance.close();
     }
@@ -414,10 +418,7 @@ function unloadWindow( strWindowName ) {
     window.instance = null;
   }
 
-  if ( strWindowName === 'index' ) {
-    config.set( 'boolKeepActivationWindowOnIndexWindowClosed', true );
-  }
-  else if ( strWindowName === 'wake' ) {
+  if ( strWindowName === 'wake' ) {
     ipcMain.removeListener( 'wake-word-recognized', onWakeWordRecognized );
     ipcMain.removeListener( 'notify-wake-by-hotword-status', onNotifyWakeByHotwordStatus );
   }
