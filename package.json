@@ -1,7 +1,7 @@
 {
   "name": "poziworld-elf",
   "productName": "PoziWorld Elf",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "Voice control for PoziTone",
   "main": "bundle/main.bundle.js",
   "scripts": {
