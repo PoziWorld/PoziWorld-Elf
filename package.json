@@ -86,10 +86,12 @@
       "icon": "src/shared/images/poziworld-app-icon-256.ico"
     },
     "nsis": {
-      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}-${env.FORCE_ARCH}.${ext}"
+      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}-${env.FORCE_ARCH}.${ext}",
+      "createDesktopShortcut": false
     },
     "nsisWeb": {
-      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}.${ext}"
+      "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}.${ext}",
+      "createDesktopShortcut": false
     },
     "compression": "maximum",
     "files": [
