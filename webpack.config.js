@@ -3,6 +3,7 @@ const webpackTargetElectronRenderer = require( 'webpack-target-electron-renderer
 
 /**
  * @todo Switch to Webpack 2
+ * @todo Split vendor
  */
 
 module.exports = {
