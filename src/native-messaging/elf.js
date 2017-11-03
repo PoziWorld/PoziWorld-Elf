@@ -63,9 +63,16 @@ function setAppStateWatcher() {
 }
 
 /**
+ * Generic callback.
  *
- * @param strFileName
- * @param funcCallback
+ * @callback funcCallback
+ */
+
+/**
+ * Start watching a file for changes.
+ *
+ * @param {string} strFileName - The name of the file being watched.
+ * @param {funcCallback} funcCallback - Callback on file change.
  */
 
 function setWatcher( strFileName, funcCallback ) {
@@ -80,16 +87,13 @@ function setWatcher( strFileName, funcCallback ) {
 }
 
 /**
+ * New message for a partner extension. Try sending.
  *
- * @param strPath
- * @param objStats
+ * @param {string} strPath - The path of the file being watched.
+ * @param {Object} objStats - https://nodejs.org/api/fs.html#fs_class_fs_stats
  */
 
 function onMessage( strPath, objStats ) {
-  if ( typeof objStats !== 'object' ) {
-    return;
-  }
-
   fs.readFile( './' + fileNames.messaging, 'utf8', function ( err, strMessage ) {
     if ( err ) {
       throw err;
@@ -105,9 +109,10 @@ function onMessage( strPath, objStats ) {
 }
 
 /**
+ * App is ready or closed. Notify a partner extension.
  *
- * @param strPath
- * @param objStats
+ * @param {string} strPath - The path of the file being watched.
+ * @param {Object} objStats - https://nodejs.org/api/fs.html#fs_class_fs_stats
  */
 
 function onAppStateChange( strPath, objStats ) {
