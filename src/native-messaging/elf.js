@@ -90,12 +90,6 @@ function onMessage( strPath, objStats ) {
     return;
   }
 
-  const intSize = objStats.size;
-
-  if ( typeof intSize !== 'number' || intSize === 0 ) {
-    return;
-  }
-
   fs.readFile( './' + fileNames.messaging, 'utf8', function ( err, strMessage ) {
     if ( err ) {
       throw err;
