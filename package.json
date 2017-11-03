@@ -41,7 +41,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.25.0",
-    "devtron": "^1.4.0",
     "electron": "^1.8.1",
     "electron-builder": "^19.42.2",
     "electron-packager": "^9.1.0",
@@ -63,7 +62,6 @@
   },
   "dependencies": {
     "chokidar": "^1.7.0",
-    "devtron": "^1.4.0",
     "electron-config": "^1.0.0",
     "electron-debug": "^1.4.0",
     "electron-updater": "^2.15.0",
