@@ -85,11 +85,13 @@
     },
     "nsis": {
       "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}-${env.FORCE_ARCH}.${ext}",
-      "createDesktopShortcut": false
+      "createDesktopShortcut": false,
+      "include": "build/installer.nsh"
     },
     "nsisWeb": {
       "artifactName": "${env.URL_FRIENDLY_PACKAGE_NAME}-Setup-v${version}.${ext}",
-      "createDesktopShortcut": false
+      "createDesktopShortcut": false,
+      "include": "build/installer.nsh"
     },
     "compression": "maximum",
     "files": [
