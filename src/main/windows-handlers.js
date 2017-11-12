@@ -5,7 +5,6 @@ import config from '../shared/config';
 import log from '../shared/log';
 import * as utils from '../shared/elf-utils';
 import nodeReg from 'node-reg';
-import nodeWindows from 'node-windows';
 require( 'electron-debug' )( { showDevTools: true } );
 
 import { windows } from './windows-config';
@@ -37,6 +36,10 @@ const shouldQuit = app.makeSingleInstance( ( commandLine, workingDirectory ) => 
   return true;
 } );
 
+const strRegEntry = 'HKCU\\SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.poziworld.elf';
+const strRegEntryValue = `${ app.getAppPath().replace( '\\resources\\app.asar', '' ) }\\com.poziworld.elf-win.json`;
+const strRegEntryType = 'REG_SZ';
+
 /**
  * When a Promise is fulfilled.
  *
@@ -63,7 +66,7 @@ const shouldQuit = app.makeSingleInstance( ( commandLine, workingDirectory ) => 
 function checkRegKey( onFulfilled, onRejected ) {
   nodeReg
     .getKey( {
-      target: 'HKLM\\SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.poziworld.elf'
+      target: strRegEntry
     } )
     .then(
       ( result ) => {
@@ -122,50 +125,22 @@ function onNativeMessagingHostNotFound( objError ) {
 function onIntroUserAction( objEvent ) {
   log.add( 'Elf: intro: click next' );
 
-  const strRegAdd = `reg add HKLM\\SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.poziworld.elf /f /ve /t REG_SZ /d ${ app.getAppPath().replace( '\\resources\\app.asar', '' ) }\\com.poziworld.elf-win.json`;
+  nodeReg
+    .addKey( {
+      target: strRegEntry,
+      value: strRegEntryValue,
+      type: strRegEntryType,
+    } )
+    .then(
+      ( result ) => {
+        objEvent.sender.send( 'intro-next-reply', 'success' );
 
-  nodeWindows.isAdminUser( ( boolIsAdminUser ) => {
-    if ( boolIsAdminUser ) {
-      log.add( 'Elf: is admin' );
-
-      nodeWindows.elevate( strRegAdd, ( elevateResult ) => {
-        log.add( 'Elf: elevate', elevateResult );
-
-        checkRegKey(
-          ( result ) => {
-            log.add( 'Elf: elevate: reg key: success', elevateResult );
-
-            objEvent.sender.send( 'intro-next-reply', 'success' );
-            createWindow();
-          },
-          ( error ) => {
-            log.add( 'Elf: elevate: reg key: error', elevateResult );
-
-            objEvent.sender.send( 'intro-next-reply', 'error' );
-          }
-        );
-      } );
-    }
-    else {
-      log.add( 'Elf: not admin' );
-
-      nodeWindows.sudo( strRegAdd, ( sudoResult ) => {
-        log.add( 'Elf: sudo', sudoResult );
-
-        checkRegKey(
-          ( result ) => {
-            objEvent.sender.send( 'intro-next-reply', 'success' );
-            createWindow();
-            windows.intro.instance.close();
-            windows.intro.instance.destroy();
-          },
-          ( error ) => {
-            objEvent.sender.send( 'intro-next-reply', 'error' );
-          }
-        );
-      } );
-    }
-  } );
+        createWindow();
+      },
+      ( error ) => {
+        objEvent.sender.send( 'intro-next-reply', 'error' );
+      }
+    );
 }
 
 /**
@@ -194,7 +169,7 @@ function loadIndexWindow() {
    */
   windows.index.instance.on( 'show', () => {
     if ( windows.intro.instance != null ) {
-      windows.intro.instance.close();
+      closeIntroWindow();
     }
   } );
 
@@ -203,7 +178,7 @@ function loadIndexWindow() {
    */
   windows.index.instance.on( 'ready-to-show', () => {
     if ( windows.intro.instance != null ) {
-      windows.intro.instance.close();
+      closeIntroWindow();
     }
   } );
 
@@ -212,7 +187,7 @@ function loadIndexWindow() {
    */
   windows.index.instance.on( 'focus', () => {
     if ( windows.intro.instance != null ) {
-      windows.intro.instance.close();
+      closeIntroWindow();
     }
   } );
 

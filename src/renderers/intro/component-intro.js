@@ -87,22 +87,6 @@ class Intro extends React.Component {
               strTitle: 'seeAvailablePartnersList',
             } ) }
               />
-          <p>
-            { i18n.t( 'howItSendsCommands' ) }
-          </p>
-          <p>
-            { i18n.t( 'whatToDo' ) }
-            <br />
-            <Interpolate
-              i18nKey="details"
-              parent="small"
-              detailsLink={ createLink( {
-                i18n,
-                strContent: 'detailsLink',
-                strHref: 'https://developer.chrome.com/extensions/nativeMessaging',
-              } ) }
-                />
-          </p>
         </section>
         <hr />
         <section>

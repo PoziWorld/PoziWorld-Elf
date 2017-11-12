@@ -5,7 +5,7 @@ export const windows = {
     instance: null,
     options: {
       width: 777,
-      height: 600,
+      height: 500,
       alwaysOnTop: false,
       darkTheme: config.get( 'boolUseDarkTheme' ),
     },
