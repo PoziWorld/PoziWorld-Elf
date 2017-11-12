@@ -1,6 +1,22 @@
 import config from '../shared/config';
 
+/**
+ * Describes all available app windows (visible to user and not) and their properties.
+ * In Electron terminology, renderer processes.
+ *
+ * @const {Object}
+ */
+
 export const windows = {
+
+  /**
+   * The first window user is supposed to see after the installation.
+   * Tries to explain what this app is and how it works.
+   *
+   * Also, displayed if a native messaging host entry is not found in the registry
+   * (most likely, deleted by user by accident).
+   */
+
   intro: {
     instance: null,
     options: {
@@ -12,6 +28,12 @@ export const windows = {
     fileName: 'intro',
     isOpen: false,
   },
+
+  /**
+   * The main window of the app.
+   * Takes commands from user and sends them to partner extensions.
+   */
+
   index: {
     instance: null,
     options: {
@@ -29,6 +51,13 @@ export const windows = {
     fileName: 'index-api-ai',
     isOpen: false,
   },
+
+  /**
+   * Not shown to user.
+   * Open only when the index window is open and a wake phrase is activated.
+   * Used in background to listen for the wake phrase (hotword).
+   */
+
   wake: {
     instance: null,
     options: {
@@ -42,6 +71,11 @@ export const windows = {
     folderName: 'wake-pocketsphinx-js',
     isOpen: false,
   },
+
+  /**
+   * Brings it to user attention that the app needs to be activated from a partner extension in order for commands to be executed.
+   */
+
   activation: {
     instance: null,
     options: {
@@ -54,6 +88,13 @@ export const windows = {
     fileName: 'activation',
     isOpen: false,
   },
+
+  /**
+   * Not shown to user.
+   * Checks whether the app has been activated from a partner extension or opened directly.
+   * If opened directly, shows the activation window.
+   */
+
   checkProcessRunning: {
     instance: null,
     options: {
