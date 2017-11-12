@@ -36,9 +36,9 @@ const shouldQuit = app.makeSingleInstance( ( commandLine, workingDirectory ) => 
   return true;
 } );
 
-const strRegEntry = 'HKCU\\SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.poziworld.elf';
-const strRegEntryValue = `${ app.getAppPath().replace( '\\resources\\app.asar', '' ) }\\com.poziworld.elf-win.json`;
-const strRegEntryType = 'REG_SZ';
+const strRegistryEntry = 'HKCU\\SOFTWARE\\Google\\Chrome\\NativeMessagingHosts\\com.poziworld.elf';
+const strRegistryEntryValue = `${ app.getAppPath().replace( '\\resources\\app.asar', '' ) }\\com.poziworld.elf-win.json`;
+const strRegistryEntryType = 'REG_SZ';
 
 /**
  * When a Promise is fulfilled.
@@ -66,7 +66,7 @@ const strRegEntryType = 'REG_SZ';
 function checkRegKey( onFulfilled, onRejected ) {
   nodeReg
     .getKey( {
-      target: strRegEntry
+      target: strRegistryEntry
     } )
     .then(
       ( result ) => {
@@ -97,9 +97,16 @@ export function createWindow() {
 function onNativeMessagingHostFound( strResult ) {
   log.add( 'Elf: native messaging host found', strResult );
 
-  ipcMain.removeListener( 'on-intro-user-action', onIntroUserAction );
+  if ( config.get( 'boolHasSeenIntroWindow' ) ) {
+    log.add( 'Elf: has seen intro window' );
 
-  loadIndexWindow();
+    loadIndexWindow();
+  }
+  else {
+    log.add( 'Elf: has NOT seen intro window' );
+
+    loadIntroWindow();
+  }
 }
 
 /**
@@ -111,36 +118,50 @@ function onNativeMessagingHostFound( strResult ) {
 function onNativeMessagingHostNotFound( objError ) {
   log.add( 'Elf: native messaging host NOT found', objError );
 
-  ipcMain.on( 'on-intro-user-action', onIntroUserAction );
-
-  loadIntroWindow();
+  loadIntroWindow( true );
 }
 
 /**
  * User (agreed to) continues from the intro window.
  *
  * @param {Object} objEvent - The event object.
+ * @param {Boolean} [boolAddRegistryEntry] - Whether a registry entry needs to be (re)created.
  */
 
-function onIntroUserAction( objEvent ) {
+function onIntroUserAction( objEvent, boolAddRegistryEntry ) {
   log.add( 'Elf: intro: click next' );
 
-  nodeReg
-    .addKey( {
-      target: strRegEntry,
-      value: strRegEntryValue,
-      type: strRegEntryType,
-    } )
-    .then(
-      ( result ) => {
-        objEvent.sender.send( 'intro-next-reply', 'success' );
+  if ( typeof boolAddRegistryEntry === 'boolean' && boolAddRegistryEntry ) {
+    nodeReg
+      .addKey( {
+        target: strRegistryEntry,
+        value: strRegistryEntryValue,
+        type: strRegistryEntryType,
+      } )
+      .then(
+        ( result ) => {
+          objEvent.sender.send( 'intro-next-reply', 'success' );
 
-        createWindow();
-      },
-      ( error ) => {
-        objEvent.sender.send( 'intro-next-reply', 'error' );
-      }
-    );
+          proceedFromIntroWindow();
+        },
+        ( error ) => {
+          objEvent.sender.send( 'intro-next-reply', 'error' );
+        }
+      );
+  }
+  else {
+    proceedFromIntroWindow();
+  }
+}
+
+/**
+ * Remember the intro window has been seen and continue.
+ */
+
+function proceedFromIntroWindow() {
+  config.set( 'boolHasSeenIntroWindow', true );
+
+  createWindow();
 }
 
 /**
@@ -152,6 +173,8 @@ function loadIndexWindow() {
   handleWakeWindow();
 
   require( './menu-index' );
+
+  ipcMain.removeListener( 'on-intro-user-action', onIntroUserAction );
 
   windows.index.isOpen = true;
 
@@ -303,12 +326,17 @@ function loadWakeWindow() {
 }
 
 /**
- * Load window that explains what the app is and what to do.
- * Create file which will indicate node.exe when to autoquit.
+ * Load window that explains what the app is.
+ *
+ * @param {Boolean} [boolAddRegistryEntry] - Whether a registry entry needs to be (re)created.
  */
 
-function loadIntroWindow() {
+function loadIntroWindow( boolAddRegistryEntry ) {
   require( './menu-intro' );
+
+  ipcMain.on( 'on-intro-user-action', ( objEvent ) => {
+    onIntroUserAction( objEvent, boolAddRegistryEntry );
+  } );
 
   /**
    * @todo DRY.

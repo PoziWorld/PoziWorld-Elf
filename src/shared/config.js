@@ -15,6 +15,8 @@ const config = new Config( {
     boolShowReceivedCommands: true,
 
     // Window
+    boolHasSeenIntroWindow: false,
+
     boolIsAlwaysOnTop: false,
     boolIsAlwaysOpen: false,
 
