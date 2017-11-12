@@ -10,7 +10,7 @@
   "autoHideMenuBar": "Auto-hide menu (press Alt)",
   "autoCloseWindowWhenNotActivated": "Auto-close window when not activated",
 
-  "wake": "Wake",
+  "wake": "Wake (Hotword)",
   "wakeApp": "App",
   "wakeListeningMode": "Listening mode",
   "featureComingSoon": "{{feature}} (coming soon)",
