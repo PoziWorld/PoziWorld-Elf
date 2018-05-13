@@ -9,6 +9,12 @@ Not many [commands][commandsList] are supported at the moment, but more are on t
 Elf is not a standalone app, it works by sending [commands][commandsList] to partner extensions installed in your browser (the Google Chrome, Opera, or another Chromium-based browser).
 
 
+Screenshots
+--------
+
+[See screenshots of the PoziWorld Elf app](https://github.com/PoziWorld/PoziWorld-Elf/wiki/Screenshots)
+
+
 Downloads
 --------
 
